@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block head %}
+<title>Sign Up</title>
+<script>
+    function myFunction() {
+  var x = document.getElementById("password");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+</script>
+{% endblock head %}
+
+
+{% block body %}
+<br>
+<h1>Sign Up</h1>
+    <hr>
+    <small>Already have an account?</small>
+    <small><a href='/login'>Login</a></small>
+    <form action='/signup' method='POST'>
+    <label for="fname"></label>
+     <input class='form-control' type='text' name='fname' id='fname'  placeholder='First Name' aria-label="First Name" required>
+    {% if user_check and user_check['fname'] == False %}
+       <small class="font-weight-bold">First name is invalid.</small>
+    {% endif %}
+
+    <br>
+    <label for="lname"></label>
+    <input class='form-control' type='text' name='lname' id='lname'  placeholder='Last Name' aria-label="Last Name" required>
+    {% if user_check and user_check['lname'] == False %}
+       <small class="font-weight-bold">Last name is invalid.</small>
+    {% endif %}
+    <br>
+    <label for="password"></label>
+    <input class='form-control' type='password' name='password' id='password'  placeholder='New Password' aria-label="New Password" required>
+    {% if user_check and user_check['password'] == False %}
+       <small class="font-weight-bold">Password must include one number, one uppercase and lowercase character, one special symbol, between 6 and 20 characters long.</small>
+    {% endif %}
+    <br>
+    <input type="checkbox" onclick="myFunction()"> Show Password
+    <br>
+    <label for="email"></label>
+    <input class='form-control' type='text' name='email' id='email'  placeholder='Email' aria-label="Email" required>
+    {% if user_check and user_check['email'] == False %}
+       <small class="font-weight-bold">Email is invalid or already taken.</small>
+    {% endif %}
+    <br>
+    <label for="birth_date">Birthday:</label>
+    <input class='form-control' type="date" id="birth_date" name="birth_date" required>
+    <br>
+
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="gender" id="male" value="m">
+        <label class="form-check-label" for="male">
+        Male
+      </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="gender" id="Female" value="f">
+        <label class="form-check-label" for="female">
+        Female
+      </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="gender" id="Other" checked value="o">
+        <label class="form-check-label" for="other">
+        Other
+      </label>
+      </div>
+
+
+      <br>
+      <input type='submit' value='Sign up'>
+    </form>
+
+
+
+    <hr>
+{% endblock body %}

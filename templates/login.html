@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block head %}
+<title>Log In</title>
+<script>
+    function myFunction() {
+  var x = document.getElementById("password");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+</script>
+{% endblock head %}
+
+
+{% block body %}
+<br>
+<h1>Log In</h1>
+    <hr>
+    <small>Don't have an account already?</small>
+    <small><a href='/signup'>Sign up</a></small>
+    <form action='/login' method='POST'>
+    <label for='email'></label>
+    <input class='form-control' type='text' name='email' id='email'  placeholder='Email' aria-label="Email" required>
+    <label for="password"></label>
+    <input class='form-control' type='password' name='password' id='password'  placeholder='Enter Password' aria-label="Enter Password" required>
+    <br><input type="checkbox" onclick="myFunction()"> Show Password
+    {% if is_wrong_password == True %}
+        <br>
+        <small class="font-weight-bold">You entered an incorrect password, please try again.</small>
+    {% endif %}
+    <br>
+
+
+      <br>
+      <input type='submit' value='Login'>
+    </form>
+
+
+
+    <hr>
+{% endblock body %}

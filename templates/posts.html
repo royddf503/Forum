@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block head %}
+<title>Posts</title>
+{% endblock head %}
+
+
+{% block body %}
+<br>
+
+{% if user %}
+<h1 style="display:inline">{{user.fname}}</h1>
+{% else %}
+<h1 style="display:inline">Guest</h1>
+{% endif %}
+
+{% if type == 0 %}
+    <h1 style="display:inline">'s News Feed</h1>
+{% else %}
+    <h1 style="display:inline">'s Profile</h1>
+{% endif %}
+<a class="btn btn-success float-right" href="/posts/new/{{user.id}}">New Post</a>
+<br>
+{% if not user %}
+    <small>Already have an account?</small>
+    <small><a href='/login'>Login</a></small>
+    <br>
+    <small>Don't have an account already?</small>
+    <small><a href='/signup'>Sign up</a></small>
+    <br>
+{% endif %}
+<hr>
+    {% for post in posts %}
+        <br>
+        <h2>{{ post['title'] }}</h2>
+        <small> Written by {{ post.user.fname }} {{ post.user.lname}} on {{ post.date_posted }}</small>
+        <br>
+        <br>
+        <p style="white-space:pre-wrap">{{ post['content'] }}</p>
+
+        {% if not user %}
+             <a class="btn btn-primary" href='/signup'>Like</a>
+        {% else %}
+        {% if not post.id in user_id_likes %}
+            <a class="btn btn-primary" href='/posts/like/{{post.id}}/{{user.id}}'>Like</a>
+        {% else %}
+            <a class="btn btn-primary" href='/posts/like/{{post.id}}/{{user.id}}'>Unlike</a>
+        {% endif %}
+        {% endif %}
+
+        {% if type == 1 %}
+            <a class="btn btn-danger" href='/posts/delete/{{post.id}}/{{user.id}}'>Delete</a>
+            <a class="btn btn-warning" href='/posts/edit/{{post.id}}/{{user.id}}'>Edit</a>
+        {% endif %}
+
+        <br>
+        <small>{{ post.likes |length }} people like this post</small>
+        <hr>
+    {% endfor %}
+{% endblock body %}
