@@ -6,13 +6,14 @@ from datetime import datetime
 
 app = Flask(__name__)  # Standard start
 
-# For Database Section
-# on the right /// refers to current location of python files //// is absolute
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///posts.db'
 db = SQLAlchemy(app)
 
 
 class User(db.Model):
+    """
+    Represents User DB
+    """
     id = db.Column(db.Integer, primary_key=True)
     fname = db.Column(db.String(10), nullable=False)
     lname = db.Column(db.String(20), nullable=False)
@@ -27,6 +28,9 @@ class User(db.Model):
 
 
 class BlogPost(db.Model):
+    """
+    Represents BlogPost DB
+    """
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100), nullable=False)
     content = db.Column(db.Text, nullable=False)
@@ -39,6 +43,9 @@ class BlogPost(db.Model):
 
 
 class Like(db.Model):
+    """
+    Represents Like DB
+    """
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, nullable=False)
     post_id = db.Column(db.Integer, db.ForeignKey(BlogPost.id), nullable=False)
@@ -49,16 +56,14 @@ class Like(db.Model):
 
 @app.route('/')
 def index():
-    # like returning the template in index.html (Must be in a folder which its name is templates)
+    # Home Page as guest
     return redirect('/posts/newsfeed/0')
-    # return render_template('index.html')
 
-
-# Sending to html all_posts as an argument
-# By default only method allowed is Get - Post refers data which send from front to back
 @app.route('/posts/newsfeed/<int:user_id>')
 def posts(user_id):
-    # In case it post we want to update db
+    """
+    All posts availlable for specific user
+    """
     all_posts = BlogPost.query.order_by(BlogPost.date_posted.desc()).all()
     user = User.query.get(user_id)
     user_id_likes = []
@@ -74,17 +79,18 @@ def posts(user_id):
 
 @app.route('/posts/profile/<int:user_id>')
 def my_profile(user_id):
+    """
+    My profile page
+    """
     user = User.query.get(user_id)
     return render_template('posts.html', posts=user.posts, user=user, type=1)
 
 
-@app.route('/onlyget', methods=['GET'])
-def get_req():
-    return "You can only get this webpage 2."
-
-
 @app.route('/posts/like/<int:post_id>/<int:user_id>')
 def like(post_id, user_id):
+    """
+    Like button method
+    """
     post = BlogPost.query.get_or_404(post_id)
 
     if user_id == 0:
@@ -106,6 +112,9 @@ def like(post_id, user_id):
 
 @app.route('/posts/delete/<int:post_id>/<int:user_id>')
 def delete(post_id, user_id):
+    """
+    Deleting post method
+    """
     post = BlogPost.query.get_or_404(post_id)
 
     for like in Like.query.filter(Like.post_id == post.id).all():
@@ -119,6 +128,9 @@ def delete(post_id, user_id):
 # POST required for editing
 @app.route('/posts/edit/<int:post_id>/<int:user_id>', methods=['GET', 'POST'])
 def edit(post_id, user_id):
+    """
+    Edit post method, user can change title and content.
+    """
     post = BlogPost.query.get_or_404(post_id)
     if request.method == 'POST':
         post.title = request.form['title']
@@ -131,7 +143,9 @@ def edit(post_id, user_id):
 
 @app.route('/posts/new/<int:user_id>', methods=['GET', 'POST'])
 def post_new_blog(user_id):
-    # In case it post we want to update db
+    """
+    Creating new blog post for specific user.
+    """
     if user_id == 0:
         return redirect('/signup')
     user = User.query.get(user_id)
@@ -150,6 +164,9 @@ def post_new_blog(user_id):
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
+    """
+    Signup for the website
+    """
     if request.method == 'POST':
         user_fname = request.form['fname']
         user_lname = request.form['lname']
@@ -175,6 +192,9 @@ def signup():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    """
+    Login to website.
+    """
     if request.method == 'POST':
         user_password = request.form['password']
         user_email = request.form['email']
@@ -193,6 +213,9 @@ def get_user_id(user_email):
 
 
 def fields_check(user):
+    """
+    Check that user fields are valid.
+    """
     check = dict.fromkeys(['fname', 'lname', 'password', 'email'], False)
     if 2 <= len(user.fname) <= 10 and user.fname.isalpha():
         check['fname'] = True
