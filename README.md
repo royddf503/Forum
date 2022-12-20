@@ -26,6 +26,12 @@ Edit: If you are the owner of a discussion, you can edit the title and body of t
 
 ![image](https://user-images.githubusercontent.com/43114148/208616796-ab1e88cf-a4f0-476f-932e-29e7be2f3953.png)
 
+![image](https://user-images.githubusercontent.com/43114148/208616943-6094def3-c3ab-47cb-b6fe-60a91c476cea.png)
+
+![image](https://user-images.githubusercontent.com/43114148/208617098-9395b3c0-8de2-4534-abc3-fb824f11e407.png)
+
+![image](https://user-images.githubusercontent.com/43114148/208618574-d6d508e9-c30c-48be-8d35-d844b0564cc1.png)
+
 ## Skills
 The forum was built using Python, Flask, and Pandas.
 The frontend of the forum was built using HTML.
