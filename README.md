@@ -41,5 +41,7 @@ To access this feature, simply run "data_preprocessing". This will display each 
 ![image](https://user-images.githubusercontent.com/43114148/208620258-bd60b890-0887-41c3-9298-2f2dcb52ef18.png)
 
 ## Skills
-The forum was built using Python, Flask, and Pandas.
-The frontend of the forum was built using HTML.
+The forum was built using **Python, Flask, and Pandas**.
+The frontend of the forum was built using **HTML**.
+Also used **SqlAlchemy and Transformers**.
+
