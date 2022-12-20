@@ -22,8 +22,6 @@ Delete: If you are the owner of a discussion, you can delete it by clicking on t
 
 Edit: If you are the owner of a discussion, you can edit the title and body of the discussion by clicking on the "Edit" button under the discussion.
 
-We hope you enjoy using my forum! If you have any questions or feedback, please don't hesitate to contact us.
-
 ## Skills
 The forum was built using Python, Flask, and Pandas.
 The frontend of the forum was built using HTML.
