@@ -1,10 +1,10 @@
 # Forum
 
-Welcome to our forum website!
+Welcome to my forum website!
 
-Our forum is a platform where users can create and participate in discussions on various topics.
+My forum is a platform where users can create and participate in discussions on various topics.
 
-Here are some of the features of our forum:
+Here are some of the features of my forum:
 
 Homepage: The homepage displays a list of all the latest discussions on the forum. You can also search for specific discussions using the search bar.
 
@@ -22,7 +22,7 @@ Delete: If you are the owner of a discussion, you can delete it by clicking on t
 
 Edit: If you are the owner of a discussion, you can edit the title and body of the discussion by clicking on the "Edit" button under the discussion.
 
-We hope you enjoy using our forum! If you have any questions or feedback, please don't hesitate to contact us.
+We hope you enjoy using my forum! If you have any questions or feedback, please don't hesitate to contact us.
 
 ## Skills
 The forum was built using Python, Flask, and Pandas.
