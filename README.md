@@ -22,6 +22,12 @@ Delete: If you are the owner of a discussion, you can delete it by clicking on t
 
 Edit: If you are the owner of a discussion, you can edit the title and body of the discussion by clicking on the "Edit" button under the discussion.
 
+In addition to the features described above, our forum also includes an advanced analysis tool that uses a sentiment model to analyze the posts of each user. This model goes through the posts of each user and determines their average sentiment, which can be either negative, neutral, or positive.
+
+Using this analysis, we can gain insights into the overall sentiment of our users and how it changes over time. This can be useful for understanding the tone of discussions on the forum and for identifying any trends or patterns in the way that users express themselves.
+
+To access this feature, simply run "data_preprocessing". This will display each user average sentiment according to their posts. You can use this information to gain a better understanding of your users and to improve the overall experience on the forum.
+
 ## Screenshots
 
 ![image](https://user-images.githubusercontent.com/43114148/208616796-ab1e88cf-a4f0-476f-932e-29e7be2f3953.png)
@@ -31,6 +37,8 @@ Edit: If you are the owner of a discussion, you can edit the title and body of t
 ![image](https://user-images.githubusercontent.com/43114148/208617098-9395b3c0-8de2-4534-abc3-fb824f11e407.png)
 
 ![image](https://user-images.githubusercontent.com/43114148/208618574-d6d508e9-c30c-48be-8d35-d844b0564cc1.png)
+
+![image](https://user-images.githubusercontent.com/43114148/208620258-bd60b890-0887-41c3-9298-2f2dcb52ef18.png)
 
 ## Skills
 The forum was built using Python, Flask, and Pandas.
